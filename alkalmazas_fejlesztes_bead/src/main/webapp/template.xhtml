@@ -10,14 +10,19 @@
     </h:head>
     <h:body>
         <p:menubar model="">
-            <f:facet name="login" rendered="">
+
+            <p:submenu label="MENU">
+
+            </p:submenu>
+            <f:facet name="options" rendered="#{empty sessionView.loggedInUser}">
                 <h:form>
-                    <p:inputText />
-                    <p:inputText />                    
-                    <p:commandButton 
+                    <p:inputText type="text" binding="#{username}"/>
+                    <p:inputText type="text" binding="#{password}"/>
+                    <p:commandButton type="submit" value="Login" icon="ui-icon-extlink" action="#{sessionView.login(username.value,password.value)}"/>
                 </h:form>
-            </f:facet>
+            </f:facet>            
         </p:menubar>
+        <h:messages />
         <div id="top">
             <ui:insert name="top"></ui:insert>
         </div>

@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,23 +20,23 @@ import javax.persistence.TemporalType;
  * @author rckz
  */
 @Entity
-public class BaseIdentity implements Serializable {
+@MappedSuperclass
+public abstract class BaseIdentity implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    protected static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    protected Long id;
     
-    private String createdBy;
+    protected String createdBy;
     @Temporal(TemporalType.DATE)
-    private Date createdOn;
+    protected Date createdOn;
     @Temporal(TemporalType.DATE)
-    private Date validTo;
+    protected Date validTo;
 
     public BaseIdentity() {
         createdOn = new Date();        
-    }
-    
+    }    
 
     public Long getId() {
         return id;
@@ -67,7 +68,8 @@ public class BaseIdentity implements Serializable {
 
     public void setValidTo(Date validTo) {
         this.validTo = validTo;
-    }    
+    }
+   
 
     @Override
     public int hashCode() {

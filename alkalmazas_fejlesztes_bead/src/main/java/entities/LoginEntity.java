@@ -7,12 +7,16 @@ package entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
  * @author rckz
  */
+@NamedQuery(name = "LoginEntity.login", query = "select t from LoginEntity t where t.username = :username and t.password = :password")
 @Entity
+@Table(name = "LoginCredentials")
 public class LoginEntity extends BaseIdentity implements Serializable {
     private String username;
     private String password;

@@ -11,12 +11,14 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author rckz
  */
 @Entity
+@Table(name = "Project")
 public class Project extends BaseIdentity implements Serializable {
 
     private String name;

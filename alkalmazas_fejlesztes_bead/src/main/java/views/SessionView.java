@@ -5,16 +5,40 @@
  */
 package views;
 
+import beans.LoginBean;
+import entities.LoginEntity;
 import java.io.Serializable;
-import javax.faces.bean.ViewScoped;
+import javax.ejb.EJB;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author rckz
  */
-@Named(value = "sessionView")
-@ViewScoped
+@Named
+@RequestScoped
 public class SessionView implements Serializable{
+    
+    @EJB
+    private LoginBean loginBean;
+    
+    private LoginEntity loggedInUser;
+    
+    public void login(String username,String password){        
+        loggedInUser = loginBean.login(username,password);
+        System.out.println(loggedInUser.getUsername()+" "+loggedInUser.getPassword());
+    }
+    public SessionView() {
+    }
+
+    public LoginEntity getLoggedInUser() {
+        return loggedInUser;
+    }
+
+    public void setLoggedInUser(LoginEntity loggedInUser) {
+        this.loggedInUser = loggedInUser;
+    }
+    
     
 }
