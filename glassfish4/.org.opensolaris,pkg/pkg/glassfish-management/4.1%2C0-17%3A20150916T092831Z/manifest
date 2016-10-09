@@ -1,0 +1,12 @@
+set name=fmri value=pkg:/glassfish-management@4.1,0-17:20150916T092831Z
+set name=info.classification value="Application Servers"
+set name=pkg.description value="REST based GlassFish management and monitoring interface. GlassFish Server is a modular and lightweight Java EE 7 compliant application server. Key features include an OSGi runtime, fast startup time, maven support, and rapid iterative development with Active Redeploy.  GlassFish Server also offers feature-rich administration with the web console, command line, and RESTful API."
+set name=pkg.summary value="GlassFish REST Management"
+depend fmri=pkg:/jersey type=require
+license 8741fa556feea4ca58ec28abc47de0bf9d5b39a3 chash=28b7cfba8f297b99296afc231955dc90e8d76d47 license="CDDL and GPL v2 with classpath exception" pkg.csize=12394 pkg.size=38052
+dir group=sys mode=0755 owner=root path=glassfish
+dir group=sys mode=0755 owner=root path=glassfish/modules
+file 133038573cdb5b9c8fbedb87b2e3549314da6acc chash=5fdfb8ee2487e7ee5f7f6afe8527718ea2b522d3 group=sys mode=0644 owner=root path=glassfish/modules/rest-service.jar pkg.csize=490804 pkg.size=535029
+file 265d18b9674487bd778a10e16a8bd6a7d9b73830 chash=3cc904ce7a5327d23121b7c748bb2e46dbea97b4 group=sys mode=0644 owner=root path=glassfish/modules/gf-restadmin-connector.jar pkg.csize=13564 pkg.size=17009
+file 5064ae6d937535a6a057b77c422ee46b5af4740d chash=77b3369ac84bcce020924c256c38d6f8f3884d32 group=sys mode=0644 owner=root path=glassfish/modules/rest-client.jar pkg.csize=27218 pkg.size=31457
+set name=publisher value=release.glassfish.org

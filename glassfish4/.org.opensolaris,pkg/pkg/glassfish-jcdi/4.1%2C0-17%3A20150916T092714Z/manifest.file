@@ -1,0 +1,9 @@
+file 68a18d1f3947f1af0fc58c7647459d510b55b19a chash=b6bf52490ac903f13aa19d7b410732a72623045d group=sys mode=0644 owner=root path=glassfish/modules/weld-integration.jar pkg.csize=137084 pkg.size=150000
+file 1cdd278fcbe178c5baab5dc1b0da79148e4132c9 chash=b89fa8a0930013f28cc9d61ca51d6501decb72a1 group=sys mode=0644 owner=root path=glassfish/modules/guava.jar pkg.csize=1669567 pkg.size=1866827
+file a71bab408ecb5edcd007a7deca4c0f4fcc7bcda2 chash=3e278878521b595a1541dff9d9f971a539e9caab group=sys mode=0644 owner=root path=glassfish/modules/cdi-api.jar pkg.csize=55807 pkg.size=70697
+file c8c9ad06d4cd8b71e305cf16281f84e9fc1167bd chash=44b7929d94774eff2ece3053b7294b366bc01250 group=sys mode=0644 owner=root path=glassfish/modules/cdi-api-fragment.jar pkg.csize=2460 pkg.size=3381
+file 9f420e808728e50f20b96718e6d4b91693c1bcb6 chash=792870e5874d0d051900a903001b14e21c45c81f group=sys mode=0644 owner=root path=glassfish/modules/gf-weld-connector.jar pkg.csize=16901 pkg.size=19395
+file a66534310c5ff8477b0f4a2e3635da1402759e39 chash=7be74af85ed7af7acb79ab1490b56d3b85cb894b group=sys mode=0644 owner=root path=glassfish/modules/bean-validator-cdi.jar pkg.csize=32515 pkg.size=38794
+file 946ba5e35a1236179605d2944cadf48f01aa09dc chash=d219195026215d56cb7cd479708cc640901517ae group=sys mode=0644 owner=root path=glassfish/modules/weld-integration-fragment.jar pkg.csize=3162 pkg.size=3914
+file 272a8fd77f64bba19e61a787bf7b1f229226bc54 chash=59d8e62d02fde5b11aff00fb3123f88fa7e18cf1 group=sys mode=0644 owner=root path=glassfish/modules/jboss-logging.jar pkg.csize=50566 pkg.size=56665
+file b000b767cb80b4acb4f37361254956d9de115fe3 chash=47b1494a9356f4ecacec1320464c469da1fb54a7 group=sys mode=0644 owner=root path=glassfish/modules/weld-osgi-bundle.jar pkg.csize=1524420 pkg.size=1716679

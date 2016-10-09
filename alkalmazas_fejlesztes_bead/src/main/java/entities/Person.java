@@ -8,6 +8,9 @@ package entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -20,20 +23,31 @@ public class Person extends BaseIdentity implements Serializable {
     private String currentPosition;
     private String address;
     private String phoneNumber;
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "people")
     private List<Project> projects;
+    @Lob
+    private byte[] image;
 
-    public Person(String name, int age, String currentPosition, String address, String phoneNumber, Project project) {
+    public Person(String name, int age, String currentPosition, String address, String phoneNumber, List<Project> projects) {
         this.name = name;
         this.age = age;
         this.currentPosition = currentPosition;
         this.address = address;
         this.phoneNumber = phoneNumber;
-        this.project = project;
+        this.projects = projects;
     }
 
     public Person() {
         super();
     }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }    
 
     public String getName() {
         return name;
@@ -75,14 +89,4 @@ public class Person extends BaseIdentity implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Project getProject() {
-        return project;
-    }
-
-    public void setProject(Project project) {
-        this.project = project;
-    }
-    
-    
-    
 }

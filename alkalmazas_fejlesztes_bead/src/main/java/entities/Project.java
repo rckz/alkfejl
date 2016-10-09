@@ -6,7 +6,11 @@
 package entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -19,6 +23,10 @@ public class Project extends BaseIdentity implements Serializable {
     private int projectNumber;
     private String description;
     
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Person")
+    private List<Person> people;
+    
     public Project() {
     }
 
@@ -26,6 +34,14 @@ public class Project extends BaseIdentity implements Serializable {
         this.name = name;
         this.projectNumber = projectNumber;
         this.description = description;
+    }
+
+    public List<Person> getPeople() {
+        return people;
+    }
+
+    public void setPeople(List<Person> people) {
+        this.people = people;
     }
 
     public String getName() {

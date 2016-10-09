@@ -1,0 +1,12 @@
+set name=fmri value=pkg:/glassfish-jts@4.1,0-17:20150916T092819Z
+set name=info.classification value="Application Servers"
+set name=pkg.description value="GlassFish JTS package provides XA transaction support. For more information on Java Transaction Service (JTS), please refer to http://java.sun.com/javaee/technologies/jts/. GlassFish Server is a modular and lightweight Java EE 7 compliant application server. Key features include an OSGi runtime, fast startup time, maven support, and rapid iterative development with Active Redeploy.  GlassFish Server also offers feature-rich administration with the web console, command line, and RESTful API."
+set name=pkg.summary value="GlassFish XA Transaction Support"
+depend fmri=pkg:/glassfish-jta type=require
+depend fmri=pkg:/glassfish-corba-base type=require
+license 8741fa556feea4ca58ec28abc47de0bf9d5b39a3 chash=28b7cfba8f297b99296afc231955dc90e8d76d47 license="CDDL and GPL v2 with classpath exception" pkg.csize=12394 pkg.size=38052
+dir group=sys mode=0755 owner=root path=glassfish
+dir group=sys mode=0755 owner=root path=glassfish/modules
+file 0be996a3588a58db37f1974b1a7ed2c35be7816e chash=3f6600895d2d114fcd309a7180aa335f9aec98c7 group=sys mode=0644 owner=root path=glassfish/modules/jts.jar pkg.csize=359451 pkg.size=382460
+file 014128bf1da36f277c668dc6712c1547b1c2c77a chash=1aa614cfa58ddb056897d83fc9fc1cf48de16d9e group=sys mode=0644 owner=root path=glassfish/modules/console-jts-plugin.jar pkg.csize=24960 pkg.size=28928
+set name=publisher value=release.glassfish.org

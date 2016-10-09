@@ -1,0 +1,39 @@
+set name=fmri value=pkg:/glassfish-web@4.1,0-17:20150916T093137Z
+set name=info.classification value="Application Servers"
+set name=pkg.description value="GlassFish web container runtime module enables support for Java EE web application technologies. For more information on Java EE web application technologies, please refer to http://java.sun.com/javaee/technologies/webapps/. GlassFish Server is a modular and lightweight Java EE 7 compliant application server. Key features include an OSGi runtime, fast startup time, maven support, and rapid iterative development with Active Redeploy.  GlassFish Server also offers feature-rich administration with the web console, command line, and RESTful API."
+set name=pkg.summary value="GlassFish Web Container"
+depend fmri=pkg:/glassfish-common type=require
+license 8741fa556feea4ca58ec28abc47de0bf9d5b39a3 chash=28b7cfba8f297b99296afc231955dc90e8d76d47 license="CDDL and GPL v2 with classpath exception" pkg.csize=12394 pkg.size=38052
+dir group=sys mode=0755 owner=root path=glassfish
+dir group=sys mode=0755 owner=root path=glassfish/modules
+file e7b3674abf0ab1f781e5fc121b7589b93d9d3299 chash=9f33bc574921a27a18c93cb42d309c8535256806 group=sys mode=0644 owner=root path=glassfish/modules/web-gui-plugin-common.jar pkg.csize=34766 pkg.size=39388
+file 94ad5d0e06acaf14f2d0fdf8d3f00e71e2886fcf chash=5507b37e48e71a344ffb08790ebad7613a7ba7eb group=sys mode=0644 owner=root path=glassfish/modules/tyrus-spi.jar pkg.csize=10345 pkg.size=13609
+file 5fbc2d4dca07720f582ced73403f2fd9491e13d2 chash=ac0c4036cd59b188b5e2f189f54e57bb45ad68cc group=sys mode=0644 owner=root path=glassfish/modules/tyrus-core.jar pkg.csize=335359 pkg.size=368593
+file 90b88738f9c00ae59e239dec2522f47fcbc22ebb chash=715e69a9a27271d3600764c387ff60f78325180c group=sys mode=0644 owner=root path=glassfish/modules/jsf-connector.jar pkg.csize=13781 pkg.size=16012
+file 7a85b6bb0f75f17d72b7fa2fd999dbf0b558769e chash=c229dcf926957d48725187d44dc08d8a706ca1b8 group=sys mode=0644 owner=root path=glassfish/modules/jersey-mvc-connector.jar pkg.csize=5686 pkg.size=7804
+file 190222006ef397c6185d46e33387d162bee7c4b8 chash=9bfec1a062a3386071ea90e613e4bd17769ecb0e group=sys mode=0644 owner=root path=glassfish/modules/web-glue.jar pkg.csize=599957 pkg.size=645186
+file 9c4fd5a3766b01f68d862377fc58e03d7133ddb5 chash=f7e4f9e083f2bee195cc0ac713f779c7e9ae5bf8 group=sys mode=0644 owner=root path=glassfish/modules/tyrus-container-grizzly-client.jar pkg.csize=41813 pkg.size=48915
+file af1ed1b6f31ed429305701f427cf479963db9996 chash=f587c0b68cb7099caac2ea3f6e7e3ba53952a0d1 group=sys mode=0644 owner=root path=glassfish/modules/javax.websocket-api.jar pkg.csize=28079 pkg.size=35509
+file 5bb2ae6d70af33d1268fccde59e79f959f43d0c1 chash=dafc3996ee8a0be4e27f9d9dc14756024447976b group=sys mode=0644 owner=root path=glassfish/modules/web-sse.jar pkg.csize=18075 pkg.size=22048
+file c0898c80468e847ebcd8d83f6095bbd931c3f495 chash=3423d2636d8b4cf0575795fb389facae43f1bf3a group=sys mode=0644 owner=root path=glassfish/modules/jstl-connector.jar pkg.csize=5561 pkg.size=6919
+file c5c95e93308da7995423292726f5e026f538574a chash=f2ecdbe16c334df4bff3a0b6017f615e0c6d687d group=sys mode=0644 owner=root path=glassfish/modules/tyrus-container-glassfish-ejb.jar pkg.csize=5197 pkg.size=6818
+file ac441cf81c857978b382905bfae4b95ecd3f55d8 chash=3768cf335e73bcc0c73c18c4dbb67de94fbd42ec group=sys mode=0644 owner=root path=glassfish/modules/tyrus-container-servlet.jar pkg.csize=22812 pkg.size=25785
+file 1f72032ecbecf6763b0bd4afbe32f03defbafc26 chash=839005330f7da087e0ff356cfdb2cf815253dc3f group=sys mode=0644 owner=root path=glassfish/modules/tyrus-server.jar pkg.csize=14501 pkg.size=16464
+file f8da55cf4ceeefa3d10435b0ab0a519b39417f7b chash=99e1c4d0f6c839fdd9c9669a8be5e206e70aeb22 group=sys mode=0644 owner=root path=glassfish/modules/javax.servlet.jsp-api.jar pkg.csize=44368 pkg.size=53011
+file f0dde6604f371ca89634ce4b0fcc0d4f4bc73399 chash=538d6259e6749207ca90c4ea4897d5bc88011dea group=sys mode=0644 owner=root path=glassfish/modules/web-cli.jar pkg.csize=169635 pkg.size=186184
+file fd8c26e8e1593fdbf13f0fbdca4e2d82205d9794 chash=f037f7b1bb10841ca171969b0139b6349e22c38c group=sys mode=0644 owner=root path=glassfish/modules/web-ha.jar pkg.csize=70049 pkg.size=77501
+file a842547ce4912de70e5b3bb8c0a0b80a3bebc015 chash=21490e158584efd9a6abd8f90463f43b65fb22cc group=sys mode=0644 owner=root path=glassfish/modules/web-core.jar pkg.csize=1062817 pkg.size=1126375
+file b1b243586ed13bd0e71ea690cd0cd7c94d7f93b0 chash=fb8668a42981959982a43f2b81d12c20f5350288 group=sys mode=0644 owner=root path=glassfish/modules/war-util.jar pkg.csize=97259 pkg.size=104056
+file 61a362b332d6f96d31e9429d0508f86c087b5d70 chash=1dc0bb1d60be68524ffe6895f75877741b2c0973 group=sys mode=0644 owner=root path=glassfish/modules/gf-web-connector.jar pkg.csize=24265 pkg.size=30060
+file cd059571c87d77c88cb36c77eb5d8b8ccb7d664e chash=16363a5fbc824b7b3fc7a6a21d497f2b8ac69292 group=sys mode=0644 owner=root path=glassfish/modules/tyrus-client.jar pkg.csize=62134 pkg.size=68645
+file 15bb971d7946ed11c68ae6bf963e82f9e2f5092b chash=73e93a2ebb783db7c99ca7d0447ec62ee7a35d57 group=sys mode=0644 owner=root path=glassfish/modules/jspcaching-connector.jar pkg.csize=6290 pkg.size=7722
+file b8300b1a8bd06da6956af0ce2be82d4ff6812bab chash=2d58b5956c93dbeb673a47b51d431d67588dd6f5 group=sys mode=0644 owner=root path=glassfish/modules/javax.el.jar pkg.csize=204628 pkg.size=221377
+file 600005e13c322eab4d2e510e0af5244ad8d952c4 chash=7b9229a9dd75e158d0f5991aa1c1da4aefddeec2 group=sys mode=0644 owner=root path=glassfish/modules/javax.servlet.jsp.jstl.jar pkg.csize=358976 pkg.size=402691
+file a3297564db003b8802f916a6bf2f57bf3a47c28d chash=13ec19a3d8e1e9edace9f5aa99d1e3078206c022 group=sys mode=0644 owner=root path=glassfish/modules/web-naming.jar pkg.csize=103372 pkg.size=112970
+file 0c61343434641ad6e0fd3fc72e0e1f8ede996001 chash=b881e52b47cf65d78cb0e0a94096ac88d4c794e4 group=sys mode=0644 owner=root path=glassfish/modules/stats77.jar pkg.csize=64628 pkg.size=81568
+file c48bd8b6f68636fb81372d3f2c805f33854021b9 chash=a9531a3f3cc32ba535328fe1d502d579e93ccfc3 group=sys mode=0644 owner=root path=glassfish/modules/javax.servlet.jsp.jar pkg.csize=510337 pkg.size=540670
+file 8be20fa97a2019d5826432cf0cc071ffd0c7f7b9 chash=4d70c14e64ed4df2e9ed71d0a7cf71d7c1864b39 group=sys mode=0644 owner=root path=glassfish/modules/tyrus-container-glassfish-cdi.jar pkg.csize=5242 pkg.size=7033
+file 5b4a64545f682166208e95680cea99caa41ab950 chash=8f9fd1c7e188cdff1bf25e129e596fb9c6f61e67 group=sys mode=0644 owner=root path=glassfish/modules/websecurity.jar pkg.csize=46233 pkg.size=49247
+file 8ce0e2252a1e7c2286b27e8cda2b68269f94ff9f chash=275466cfc5a11fa7bf1f86891b00b93aadb354c5 group=sys mode=0644 owner=root path=glassfish/modules/web-embed-api.jar pkg.csize=25018 pkg.size=29523
+file 0b056d3aa144fc579ba9de9c99d47217d60a5b12 chash=2613982a6984057a23421b14fc41f67df62d7d8f group=sys mode=0644 owner=root path=glassfish/modules/javax.servlet.jsp.jstl-api.jar pkg.csize=27777 pkg.size=32218
+set name=publisher value=release.glassfish.org
