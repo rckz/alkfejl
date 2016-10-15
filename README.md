@@ -36,7 +36,7 @@ A program legfőbb célja jól átláthatóan, és érthetően nyilvántartani e
   
   
 Bejelentkezés
- 
+ ![alt text](/imgs/bejelentkezes.png "")
 Kijelentkezés
  
 Jelöltek megtekintése, szerkesztése, törlése
