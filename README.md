@@ -38,9 +38,11 @@ A program legfőbb célja jól átláthatóan, és érthetően nyilvántartani e
   
   
 Bejelentkezés
+
  ![alt text](/imgs/bejelentkezes.png "")
  
 Kijelentkezés
+
  ![alt text](/imgs/kijelentkezes.png "")
  
 Jelöltek megtekintése, szerkesztése, törlése
@@ -64,6 +66,7 @@ Oldaltérkép
   *	Beosztottak projekthez rendelése
   *	Új projekt létrehozása, kategóriába sorolása, törlése
   *	Új beosztott regisztrálása
+  
  
 Végpontok
 *	GET /login : Bejelentkező oldal
