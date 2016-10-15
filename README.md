@@ -34,16 +34,22 @@ A program legfőbb célja jól átláthatóan, és érthetően nyilvántartani e
   *	Projektek kategóriákba sorolása
   *	Új beosztott regisztrálása
   
+![alt text](/imgs/hasznalat_eset.png "")
+  
   
 Bejelentkezés
  ![alt text](/imgs/bejelentkezes.png "")
+ 
 Kijelentkezés
+ ![alt text](/imgs/kijelentkezes.png "")
  
 Jelöltek megtekintése, szerkesztése, törlése
+ ![alt text](/imgs/jeloltek.png "")
  
 Projektek létrehozása, kategóriába sorolása, megtekintése, szerkesztése, törlése
- 
+ ![alt text](/imgs/projektek.png "")
 Új beosztott regisztrálása
+![alt text](/imgs/beosztott.png "")
  
 Oldaltérkép
 *	Publikus
@@ -68,4 +74,6 @@ Végpontok
 *	POST /users: Felhasználók listájának szerkesztése
 <h6>1.3. Osztálymodell</h6>
 **Adatmodell**
+
+![alt text](/imgs/adatmodell.png "")
  
