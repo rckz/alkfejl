@@ -17,8 +17,9 @@ A program legfőbb célja jól átláthatóan, és érthetően nyilvántartani e
 *	**Karbantarthatóság:** könnyen lehessen bővíteni, a különböző típusú fájlok külön csoportosítva, ésszerűen legyenek felbontva, a könnyebb fejleszthetőség miatt
  
 <h3>1.2. Használatieset-modell, funkcionális követelmények</h3>
+
 **Vendég:** Csak a login formot éri el
-*	Bejelentkezés
+ *	Bejelentkezés
 
 **Beosztott:** A következő funckióhoz is hozzáfér. 
   *	Beosztotthoz tartozó projektek megtekintése, szerkesztése
