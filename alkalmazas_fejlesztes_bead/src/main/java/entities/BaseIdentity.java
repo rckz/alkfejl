@@ -7,11 +7,11 @@ package entities;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
+import javax.persistence.PrePersist;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -19,7 +19,6 @@ import javax.persistence.TemporalType;
  *
  * @author rckz
  */
-@Entity
 @MappedSuperclass
 public abstract class BaseIdentity implements Serializable {
 
@@ -31,11 +30,14 @@ public abstract class BaseIdentity implements Serializable {
     protected String createdBy;
     @Temporal(TemporalType.DATE)
     protected Date createdOn;
-    @Temporal(TemporalType.DATE)
-    protected Date validTo;
+    
+    @PrePersist
+    public void prePersist(){
+        createdOn = new Date();
+    }
 
     public BaseIdentity() {
-        createdOn = new Date();        
+        
     }    
 
     public Long getId() {
@@ -61,15 +63,6 @@ public abstract class BaseIdentity implements Serializable {
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
     }
-
-    public Date getValidTo() {
-        return validTo;
-    }
-
-    public void setValidTo(Date validTo) {
-        this.validTo = validTo;
-    }
-   
 
     @Override
     public int hashCode() {

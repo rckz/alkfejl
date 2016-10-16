@@ -9,7 +9,7 @@ import beans.LoginBean;
 import entities.LoginEntity;
 import java.io.Serializable;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -17,18 +17,24 @@ import javax.inject.Named;
  * @author rckz
  */
 @Named
-@RequestScoped
-public class SessionView implements Serializable{
-    
+@SessionScoped
+public class SessionView implements Serializable {
+
     @EJB
     private LoginBean loginBean;
-    
+
     private LoginEntity loggedInUser;
-    
-    public void login(String username,String password){        
-        loggedInUser = loginBean.login(username,password);
-        System.out.println(loggedInUser.getUsername()+" "+loggedInUser.getPassword());
+
+    public void login(String username, String password) {
+        try {
+            loggedInUser = loginBean.login(username, password);
+            System.out.println(loggedInUser.getUsername()+" "+loggedInUser.getPassword());
+        } catch (NullPointerException ex) {                
+            System.out.println("sikertelen bejelentkezés");
+        }
+
     }
+
     public SessionView() {
     }
 
@@ -39,6 +45,5 @@ public class SessionView implements Serializable{
     public void setLoggedInUser(LoginEntity loggedInUser) {
         this.loggedInUser = loggedInUser;
     }
-    
-    
+
 }
