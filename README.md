@@ -72,8 +72,8 @@ Oldaltérkép
 Végpontok
 *	GET /login : Bejelentkező oldal
 *	POST /login : Autentikáció
-*	GET /candidates: Projekt jelöltjei
-*	POST /candidates : Jelöltek szerkesztése
+*	GET /candidates: Projekt jelöltjei és projektek adminisztrációja
+*	POST /candidates : Jelöltek,projektek szerkesztése
 *	GET /users : Felhasználók listája
 *	POST /users: Felhasználók listájának szerkesztése
 <h6>1.3. Osztálymodell</h6>
