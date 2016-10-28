@@ -1,3 +1,0 @@
-file f43bd1707072f904d9278733f99808ec2cc39be8 chash=9d8bfd7e35e31c028677c2ec8c5ef2d8028e5e99 group=sys mode=0644 owner=root path=glassfish/modules/registration-api.jar pkg.csize=8852 pkg.size=11792
-file e1b446f35f9efbed107844b8486bd3189df91d37 chash=590eb6238c49c4ccdf2c43c75af6f2b6f7683bb8 group=sys mode=0644 owner=root path=glassfish/modules/registration-impl.jar pkg.csize=71242 pkg.size=77047
-file ef96e4fc49d594adf0d70ade10c3b0a78e53b9f0 chash=f02d3a77b4df0d0240d3dbe005999c94ab6ec47c group=sys mode=0644 owner=root path=glassfish/modules/glassfish-registration.jar pkg.csize=19442 pkg.size=21847
