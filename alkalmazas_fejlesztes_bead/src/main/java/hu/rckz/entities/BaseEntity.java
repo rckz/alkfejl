@@ -3,42 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package hu.rckz.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.PrePersist;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.SequenceGenerator;
 
 /**
  *
  * @author rckz
  */
 @MappedSuperclass
-public abstract class BaseIdentity implements Serializable {
+public class BaseEntity implements Serializable {
 
-    protected static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    protected Long id;
-    
-    protected String createdBy;
-    @Temporal(TemporalType.DATE)
-    protected Date createdOn;
-    
-    @PrePersist
-    public void prePersist(){
-        createdOn = new Date();
-    }
-
-    public BaseIdentity() {
-        
-    }    
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "SEQMYCLASSID")
+//    @SequenceGenerator(name="SEQMYCLASSID", sequenceName="SEQMYCLASSID")
+    private Long id;
 
     public Long getId() {
         return id;
@@ -46,22 +31,6 @@ public abstract class BaseIdentity implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(String createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
     }
 
     @Override
@@ -74,10 +43,10 @@ public abstract class BaseIdentity implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BaseIdentity)) {
+        if (!(object instanceof BaseEntity)) {
             return false;
         }
-        BaseIdentity other = (BaseIdentity) object;
+        BaseEntity other = (BaseEntity) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -86,7 +55,7 @@ public abstract class BaseIdentity implements Serializable {
 
     @Override
     public String toString() {
-        return "entities.BaseIdentity[ id=" + id + " ]";
+        return "hu.rckz.entities.BaseEntity[ id=" + id + " ]";
     }
-    
+
 }

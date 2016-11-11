@@ -6,31 +6,42 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Random title</title>
+        <style type="text/css">
+            body {
+                background-color: #555555;
+            }
+            .right {
+                text-align: right;
+            }    
+            .center{
+                text-align: center;
+            }
+            @media screen and (max-width: 40em) {
+                .right {
+                    text-align: left;
+                }                  
+            }        
+        </style>
+        <ui:insert name="head"/>
     </h:head>
     <h:body>
-        <p:menubar model="">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-lg-12">
+                <p:menubar model="">
 
-            <p:submenu label="MENU">
-
-            </p:submenu>
-            <f:facet name="options" rendered="#{empty sessionView.loggedInUser}">
-                <h:form>
-                    <p:inputText type="text" binding="#{username}"/>
-                    <p:inputText type="text" binding="#{password}"/>
-                    <p:commandButton type="submit" value="Login" icon="ui-icon-extlink" action="#{sessionView.login(username.value,password.value)}"/>
-                </h:form>
-            </f:facet>            
-        </p:menubar>
-        <h:messages />
-        <div id="top">
-            <ui:insert name="top"></ui:insert>
-        </div>
-        <div id="mid">
-            <ui:insert name="mid"></ui:insert>
-        </div>
-        <div id="bottom">
-            <ui:insert name="bottom"></ui:insert>
+                    <p:menuitem value="users" url="http://localhost:8080/alkalmazas_fejlesztes_bead/users.xhtml"/>
+                    <f:facet name="options" rendered="#{empty sessionView.loggedInUser}">
+                        <h:form id="templateForm">
+                            <p:growl id="growl" showDetail="true" />
+                            <p:outputLabel value="#{sessionView.loggedInUser.name}" style="margin-right: 10px"/>
+                            <p:commandButton value="Kijelentkezés" action="#{loginView.logout}"/>                            
+                        </h:form>
+                    </f:facet>            
+                </p:menubar>                
+                <div class="ui-g-12 ui-md-12 ui-lg-12">
+                    <ui:insert name="content"/>
+                </div>        
+            </div>
         </div>
     </h:body>
 </html>

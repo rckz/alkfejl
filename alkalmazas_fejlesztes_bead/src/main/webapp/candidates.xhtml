@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel id="candidatePanel" header="Projektek">
+                            <p:dataTable id="projectsTable" var="project" value="#{candidateView.projects}" selectionMode="single" selection="#{candidateView.selectedProject}" rowKey="#{project.id}">
+                                <f:facet name="header">
+                                    Projektek
+                                </f:facet>
+                                <p:ajax event="rowSelect" listener="#{candidateView.onRowSelect}" update=":candidatePanel:candidateTable" />
+                                <p:ajax event="rowUnselect" listener="#{candidateView.onRowUnselect}" update=":candidatePanel:candidateTable" />
+                                <p:column headerText="Projekt szám">
+                                    <h:outputText value="#{project.projectNumber}" />
+                                </p:column>
+                                <p:column headerText="Projekt név">
+                                    <h:outputText value="#{project.projectName}" />
+                                </p:column>
+                                <p:column headerText="Kategória">
+                                    <h:outputText value="#{project.category}" />
+                                </p:column>                                
+                            </p:dataTable>
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel id="candidatePanel" header="Jelöltek">
+                            <p:dataTable id="candidateTable" var="candidate" value="#{candidateView.candidates}" editable="true" style="margin-bottom:20px">
+                                <f:facet name="header">
+                                    Jelöltek
+                                </f:facet>
+
+                                <p:ajax event="rowEdit" listener="#{candidateView.onRowEdit}"/>
+                                <p:ajax event="rowEditCancel" listener="#{candidateView.onRowEditCancel}"/>
+
+                                <p:column headerText="Név">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{candidate.name}" /></f:facet>
+                                        <f:facet name="input"><p:inputText id="modelInput" value="#{candidate.name}" style="width:100%"/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Életkor">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{candidate.age}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{candidate.age}" style="width:100%" label=""/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column headerText="Jelenlegi pozíció">
+                                    <p:cellEditor>
+                                        <f:facet name="output"><h:outputText value="#{candidate.currentJob}" /></f:facet>
+                                        <f:facet name="input"><p:inputText value="#{candidate.currentJob}" style="width:100%" label=""/></f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+
+                                <p:column style="width:32px">
+                                    <p:rowEditor />
+                                </p:column>
+                            </p:dataTable>
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>                
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

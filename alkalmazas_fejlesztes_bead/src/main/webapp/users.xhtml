@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+
+
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel id="registerNewUserPanel" header="Új felhasználó regisztrálása">
+                            <h:form>
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Felhasználónév: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{username}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Név: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{name}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Jelszó:"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:password binding="#{password}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5"/>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:commandButton type="submit" value="Regisztrálás" icon="ui-icon-plus" update=":registeredUsersForm:registeredUsersTable :templateForm:growl" action="#{usersView.registerNewUser(username.value,password.value,name.value)}"/>
+                                    </div>                                
+                                </div>
+
+                            </h:form> 
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>  
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel header="Regisztrált felhasználók">
+                            <h:form id="registeredUsersForm">
+                                <p:dataTable id="registeredUsersTable" var="user" value="#{usersView.registeredUsers}" selectionMode="single" selection="#{usersView.selectedRegisteredUser}" rowKey="#{user.username}" >
+
+                                    <p:column headerText="Felhasználónév">
+                                        <h:outputText value="#{user.username}" />
+                                    </p:column>
+                                    <p:column headerText="Név">
+                                        <h:outputText value="#{user.name}" />
+                                    </p:column>
+
+                                    <f:facet name="footer">
+                                        <p:commandButton action="#{usersView.deleteUser()}" process="registeredUsersTable" update=":registeredUsersForm:registeredUsersTable :templateForm:growl" icon="ui-icon-closethick" value="Törlés" disabled="#{empty usersView.selectedRegisteredUser}"/>
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{usersView.setSelectedUser()}" update=":registeredUsersForm:registeredUsersTable :rolePickForm :projectPickForm" />
+                                    <p:ajax event="rowUnselect" listener="#{usersView.setSelectedUser()}" update=":registeredUsersForm:registeredUsersTable :rolePickForm :projectPickForm" />
+                                </p:dataTable>
+                            </h:form>
+                        </p:panel>
+                    </div>
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel header="Projektek kiosztása">
+                            <p:outputPanel>
+                                <h:form id="projectPickForm">
+                                    <div class="ui-g">
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"/>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-9"> 
+                                            <p:pickList id="projectPickList" value="#{usersView.projectDualList}" var="project" itemLabel="#{project.projectName}" itemValue="#{project}" converter="entityConverter"/>
+                                        </div>      
+                                        <div class="ui-g-12 ui-md-6 ui-lg-5"/>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-7"> 
+                                            <p:commandButton id="saveProjects" value="Mentés" icon="ui-icon-disk" style="margin-top:5px" action="#{usersView.saveProjects}" />
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </p:outputPanel>
+                        </p:panel>
+                    </div>                
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>
+
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel header="Szerepkörök kezelése">
+                            <p:outputPanel>
+                                <h:form id="rolePickForm">
+                                    <div class="ui-g">                                    
+                                        <div class="ui-g-12 ui-md-6 ui-lg-3"/>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-9">                                        
+                                            <p:pickList id="rolePickList" value="#{usersView.rolesDualList}" var="role" itemLabel="#{role.name}" itemValue="#{role}" converter="entityConverter"/>
+
+                                        </div>      
+                                        <div class="ui-g-12 ui-md-6 ui-lg-5"/>
+                                        <div class="ui-g-12 ui-md-6 ui-lg-7"> 
+                                            <p:commandButton id="saveRoles" value="Mentés" icon="ui-icon-disk" style="margin-top:5px" action="#{usersView.saveRoles}" />
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </p:outputPanel>
+                        </p:panel>
+                    </div>                
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
