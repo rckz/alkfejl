@@ -5,6 +5,7 @@
  */
 package hu.rckz.views;
 
+import hu.rckz.beans.CandidateBean;
 import java.util.List;
 import hu.rckz.entities.Candidate;
 import hu.rckz.entities.Project;
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -26,12 +28,14 @@ public class CandidateView {
     private Project selectedProject;
     
     @EJB
+    CandidateBean candidateBean;
     
+    @Inject
+    SessionView sessionView;
     
     @PostConstruct
     public void init() {
-        projects = new ArrayList<>();
-        
+        projects = candidateBean.getProjectsForUser(sessionView.getLoggedInUser());
     }
     
     public CandidateView() {
@@ -43,11 +47,20 @@ public class CandidateView {
     public void onRowEditCancel() {
         
     }
+    public void saveNewCandidate(String name,String email,String phoneNumber,String age,String currentJob) {
+        try{
+            candidateBean.saveNewCandidate(name,email,phoneNumber,age,currentJob);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    
     public void onRowSelect() {
-        
+        projects = candidateBean.getProjectsForUser(sessionView.getLoggedInUser());
     }
     public void onRowUnselect() {
         selectedProject = null;
+        projects = null;
     }    
 
     public List<Project> getProjects() {

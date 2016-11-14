@@ -5,8 +5,10 @@
  */
 package hu.rckz.beans;
 
+import hu.rckz.entities.Candidate;
 import hu.rckz.entities.Project;
 import hu.rckz.entities.User;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -24,12 +26,22 @@ public class CandidateBean {
     
     public List<Project> getProjectsForUser(User user) {
         List<Project> resultList = em.createNamedQuery("Project.getProjects",Project.class).getResultList();
+        List<Project> returnList = new ArrayList<>();
         Project currentProject;
         for(int i = 0;i<resultList.size();++i){
            currentProject = resultList.get(i);
-//           if(currentProject.getUser().)
+           if(currentProject.getUsers().contains(user)){
+               returnList.add(currentProject);
+           }
         }
-        return resultList;
+        return returnList;
     }
-    
+
+    public void saveNewCandidate(String name, String email, String phoneNumber, String age, String currentJob) {
+        try{            
+            em.persist(new Candidate(name,currentJob,phoneNumber,email,Integer.parseInt(age)));
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
 }

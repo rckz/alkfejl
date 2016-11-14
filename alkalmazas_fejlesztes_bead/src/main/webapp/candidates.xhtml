@@ -14,23 +14,25 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                     <div class="ui-g-12 ui-md-8 ui-lg-6">
-                        <p:panel id="candidatePanel" header="Projektek">
-                            <p:dataTable id="projectsTable" var="project" value="#{candidateView.projects}" selectionMode="single" selection="#{candidateView.selectedProject}" rowKey="#{project.id}">
-                                <f:facet name="header">
-                                    Projektek
-                                </f:facet>
-                                <p:ajax event="rowSelect" listener="#{candidateView.onRowSelect}" update=":candidatePanel:candidateTable" />
-                                <p:ajax event="rowUnselect" listener="#{candidateView.onRowUnselect}" update=":candidatePanel:candidateTable" />
-                                <p:column headerText="Projekt szám">
-                                    <h:outputText value="#{project.projectNumber}" />
-                                </p:column>
-                                <p:column headerText="Projekt név">
-                                    <h:outputText value="#{project.projectName}" />
-                                </p:column>
-                                <p:column headerText="Kategória">
-                                    <h:outputText value="#{project.category}" />
-                                </p:column>                                
-                            </p:dataTable>
+                        <p:panel id="projectsPanel" header="Projektek">
+                            <h:form id="projectsForm">
+                                <p:dataTable id="projectsTable" var="project" value="#{candidateView.projects}" selectionMode="single" selection="#{candidateView.selectedProject}" rowKey="#{project.id}">
+                                    <f:facet name="header">
+                                        Projektek
+                                    </f:facet>
+                                    <p:ajax event="rowSelect" listener="#{candidateView.onRowSelect}" update=":candidatePanel" />
+                                    <p:ajax event="rowUnselect" listener="#{candidateView.onRowUnselect}" update=":candidatePanel" />
+                                    <p:column headerText="Projekt szám">
+                                        <h:outputText value="#{project.projectNumber}" />
+                                    </p:column>
+                                    <p:column headerText="Projekt név">
+                                        <h:outputText value="#{project.projectName}" />
+                                    </p:column>
+                                    <p:column headerText="Kategória">
+                                        <h:outputText value="#{project.category}" />
+                                    </p:column>                                
+                                </p:dataTable>
+                            </h:form>
                         </p:panel>
                     </div>
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
@@ -38,43 +40,100 @@
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                     <div class="ui-g-12 ui-md-8 ui-lg-6">
-                        <p:panel id="candidatePanel" header="Jelöltek">
-                            <p:dataTable id="candidateTable" var="candidate" value="#{candidateView.candidates}" editable="true" style="margin-bottom:20px">
-                                <f:facet name="header">
-                                    Jelöltek
-                                </f:facet>
+                        <p:panel class="bottommargin" id="candidatePanel" header="Jelöltek">
+                            <h:form id="candidateForm">
 
-                                <p:ajax event="rowEdit" listener="#{candidateView.onRowEdit}"/>
-                                <p:ajax event="rowEditCancel" listener="#{candidateView.onRowEditCancel}"/>
+                                <p:dataTable id="candidateTable" var="candidate" value="#{candidateView.candidates}" editable="true" style="margin-bottom:20px">
+                                    <f:facet name="header">
+                                        Jelöltek
+                                    </f:facet>
 
-                                <p:column headerText="Név">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{candidate.name}" /></f:facet>
-                                        <f:facet name="input"><p:inputText id="modelInput" value="#{candidate.name}" style="width:100%"/></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
+                                    <p:ajax event="rowEdit" listener="#{candidateView.onRowEdit}"/>
+                                    <p:ajax event="rowEditCancel" listener="#{candidateView.onRowEditCancel}"/>
 
-                                <p:column headerText="Életkor">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{candidate.age}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{candidate.age}" style="width:100%" label=""/></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
+                                    <p:column headerText="Név">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{candidate.name}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{candidate.name}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+                                    <p:column headerText="Email">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{candidate.email}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{candidate.email}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+                                    <p:column headerText="Telefonszám">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{candidate.phoneNumber}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{candidate.phoneNumber}" style="width:100%"/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
 
-                                <p:column headerText="Jelenlegi pozíció">
-                                    <p:cellEditor>
-                                        <f:facet name="output"><h:outputText value="#{candidate.currentJob}" /></f:facet>
-                                        <f:facet name="input"><p:inputText value="#{candidate.currentJob}" style="width:100%" label=""/></f:facet>
-                                    </p:cellEditor>
-                                </p:column>
+                                    <p:column headerText="Életkor">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{candidate.age}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{candidate.age}" style="width:100%" label=""/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
 
-                                <p:column style="width:32px">
-                                    <p:rowEditor />
-                                </p:column>
-                            </p:dataTable>
+                                    <p:column headerText="Jelenlegi pozíció">
+                                        <p:cellEditor>
+                                            <f:facet name="output"><h:outputText value="#{candidate.currentJob}" /></f:facet>
+                                            <f:facet name="input"><p:inputText value="#{candidate.currentJob}" style="width:100%" label=""/></f:facet>
+                                        </p:cellEditor>
+                                    </p:column>
+
+                                    <p:column style="width:32px">
+                                        <p:rowEditor />
+                                    </p:column>
+                                </p:dataTable>
+                            </h:form>
                         </p:panel>
+                        
+                        <p:panel id="registerCandidatePanel" header="Jelölt létrehozása">
+                            <h:form id="registerCandidateForm">
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Név: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{name}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Email: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{email}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Telefonszám: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{phoneNumber}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel id="eletkor" value="Életkor: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{age}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Jelenlegi pozíció"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:password binding="#{currentJob}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5"/>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:commandButton type="submit" value="Felvétel" icon="ui-icon-plus" update=":projectsPanel :candidatePanel" action="#{candidateView.saveNewCandidate(name, email, phoneNumber, age, currentJob)}"/>
+                                    </div>   
+                                </div>
+                            </h:form>
+                        </p:panel>
+                        
                     </div>
-                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                 </div>                
             </ui:define>
         </ui:composition>

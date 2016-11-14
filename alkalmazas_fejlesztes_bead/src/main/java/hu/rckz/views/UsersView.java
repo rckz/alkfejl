@@ -45,11 +45,16 @@ public class UsersView implements Serializable {
         rolesDualList = new DualListModel<>(new ArrayList<Role>(), new ArrayList<Role>());
         projectDualList = new DualListModel<>(new ArrayList<Project>(), new ArrayList<Project>());        
     }
+    
+    public void registerNewProject(String name,String number) {
+        usersBean.saveNewProject(name,number);
+    }
+    
     public void saveRoles(){
         usersBean.saveRoles(selectedRegisteredUser,rolesDualList.getTarget());
     }
     public void saveProjects() {
-        usersBean.saveProjects(selectedRegisteredUser,projectDualList.getTarget());
+        usersBean.saveProjects(selectedRegisteredUser,projectDualList.getSource(),projectDualList.getTarget());
     }
     
     public void setSelectedUser(){

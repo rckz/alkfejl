@@ -16,7 +16,7 @@
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                     <div class="ui-g-12 ui-md-8 ui-lg-6">
                         <p:panel id="registerNewUserPanel" header="Új felhasználó regisztrálása">
-                            <h:form>
+                            <h:form id="registerNewUserForm">
                                 <div class="ui-g">
                                     <div class="ui-g-12 ui-md-6 ui-lg-5 right">
                                         <p:outputLabel value="Felhasználónév: "/>
@@ -28,7 +28,7 @@
                                         <p:outputLabel value="Név: "/>
                                     </div>
                                     <div class="ui-g-12 ui-md-6 ui-lg-7">
-                                        <p:inputText type="text" binding="#{name}"/>
+                                        <p:inputText type="text" binding="#{uname}"/>
                                     </div>
                                     <div class="ui-g-12 ui-md-6 ui-lg-5 right">
                                         <p:outputLabel value="Jelszó:"/>
@@ -38,7 +38,7 @@
                                     </div>
                                     <div class="ui-g-12 ui-md-6 ui-lg-5"/>
                                     <div class="ui-g-12 ui-md-6 ui-lg-7">
-                                        <p:commandButton type="submit" value="Regisztrálás" icon="ui-icon-plus" update=":registeredUsersForm:registeredUsersTable :templateForm:growl" action="#{usersView.registerNewUser(username.value,password.value,name.value)}"/>
+                                        <p:commandButton type="submit" value="Regisztrálás" icon="ui-icon-plus" update=":registeredUsersForm:registeredUsersTable :templateForm:growl" action="#{usersView.registerNewUser(username.value,password.value,uname.value)}"/>
                                     </div>                                
                                 </div>
 
@@ -72,7 +72,33 @@
                     </div>
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                 </div>
-
+                <div class="ui-g">
+                    <div class="ui-g-12 ui-md-8 ui-lg-3"/>
+                    <div class="ui-g-12 ui-md-8 ui-lg-6">
+                        <p:panel id="registerProjecttePanel" header="Projekt létrehozása">
+                            <h:form id="registerProjectForm">
+                                <div class="ui-g">
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Projekt név: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{name}"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5 right">
+                                        <p:outputLabel value="Projekt szám: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:inputText type="text" binding="#{number}"/>
+                                    </div>                                    
+                                    <div class="ui-g-12 ui-md-6 ui-lg-5"/>
+                                    <div class="ui-g-12 ui-md-6 ui-lg-7">
+                                        <p:commandButton type="submit" value="Felvétel" icon="ui-icon-plus" action="#{usersView.registerNewProject(name.value, number.value)}"/>
+                                    </div>   
+                                </div>                                    
+                            </h:form>
+                        </p:panel>
+                    </div>
+                </div>
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-8 ui-lg-3"/>
                     <div class="ui-g-12 ui-md-8 ui-lg-6">

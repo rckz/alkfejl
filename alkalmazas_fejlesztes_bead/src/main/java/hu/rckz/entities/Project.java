@@ -14,6 +14,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -31,24 +32,22 @@ public class Project extends BaseEntity implements Serializable {
     @Column(unique = true)
     private int projectNumber;
 
-    @ManyToMany(cascade = CascadeType.REMOVE)
+    @OneToMany
     private List<Candidate> candidates;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
     private Category category;
-    
+
     @ManyToMany
     private List<User> users;
 
-    public Project(String projectName, int projectNumber, List<Candidate> candidates, Category category) {
+    public Project(String projectName, int projectNumber) {
         this.projectName = projectName;
-        this.projectNumber = projectNumber;
-        this.candidates = candidates;
-        this.category = category;
+        this.projectNumber = projectNumber;        
     }
 
     public Project() {
-    }
+    }    
 
     public List<User> getUsers() {
         return users;
@@ -57,7 +56,7 @@ public class Project extends BaseEntity implements Serializable {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-   
+
     public String getProjectName() {
         return projectName;
     }

@@ -8,7 +8,7 @@ package hu.rckz.entities;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,16 +22,15 @@ public class Candidate extends BaseEntity implements Serializable{
     private String phoneNumber;
     private String email;
     private int age;
-    @ManyToMany
-    private List<Project> project;
+    @ManyToOne
+    private Project project;
 
-    public Candidate(String name, String currentJob, String phoneNumber, String email, int age, List<Project> project) {
+    public Candidate(String name, String currentJob, String phoneNumber, String email, int age) {
         this.name = name;
         this.currentJob = currentJob;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.age = age;
-        this.project = project;
+        this.age = age;        
     }
 
     public Candidate() {
@@ -77,13 +76,12 @@ public class Candidate extends BaseEntity implements Serializable{
         this.age = age;
     }
 
-    public List<Project> getProject() {
+    public Project getProject() {
         return project;
     }
 
-    public void setProject(List<Project> project) {
+    public void setProject(Project project) {
         this.project = project;
     }
-    
     
 }

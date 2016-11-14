@@ -95,18 +95,35 @@ public class UsersBean {
             return roles;
         }catch(NullPointerException ex){
             return new ArrayList<>();
-        }
-        
+        }        
     }
 
     public void saveRoles(User user,List<Role> roles) {
         User found = em.find(User.class, user.getId());
         found.setRoles(roles);
+        em.merge(found);
     }
 
-    public void saveProjects(User user, List<Project> projects) {
+    public void saveProjects(User user,List<Project> source, List<Project> target) {
         User found = em.find(User.class, user.getId());
-        found.setProjects(projects);
+        found.setProjects(target);
+        for(Project x: target){
+            x.getUsers().add(user);
+            em.merge(x);
+        }        
+        for(Project x : source){
+            x.getUsers().remove(user);
+            em.merge(x);
+        }
+        
+    }
+
+    public void saveNewProject(String name, String number) {
+        try{
+            em.persist(new Project(name,Integer.parseInt(number)));
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
     }
 
 }
