@@ -43,7 +43,7 @@ public class User extends BaseEntity implements Serializable {
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Project> projects;
     
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Menu> menu;
 
     public User(String username, String password, String name) {
@@ -53,8 +53,12 @@ public class User extends BaseEntity implements Serializable {
     }
 
     public static User findByLoginName(EntityManager em, String loginName) {
-        List<User> list = em.createNamedQuery("User.byLoginName", User.class).setParameter("loginName", loginName).setMaxResults(1).getResultList();
-        return list.isEmpty() ? null : list.get(0);
+        try{
+            User user = em.createNamedQuery("User.byLoginName", User.class).setParameter("loginName", loginName).setMaxResults(1).getSingleResult();
+            return user;
+        }catch(NullPointerException ex){
+            return null;
+        }       
     }
 
     public User() {

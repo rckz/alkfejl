@@ -5,12 +5,12 @@
  */
 package hu.rckz.beans;
 
-import hu.rckz.entities.Role;
 import hu.rckz.entities.User;
-import java.util.List;
 import javax.annotation.Resource;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.SessionContext;
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -18,7 +18,9 @@ import javax.persistence.PersistenceContext;
  *
  * @author rckz
  */
-@Stateless
+@Stateful
+@DeclareRoles(value = {"admin","user"})
+@RolesAllowed({"admin","user"})
 public class LoginBean {
     @PersistenceContext
     private EntityManager em;
@@ -26,9 +28,8 @@ public class LoginBean {
     @Resource
     protected SessionContext sessionContext;
     
-    public User getLoggedInUser() {
+    public User getLoggedInUser() {        
         return User.findByLoginName(em, sessionContext.getCallerPrincipal().getName());
-    }
-    
+    }    
      
 }

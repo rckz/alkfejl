@@ -11,6 +11,8 @@ import hu.rckz.entities.Candidate;
 import hu.rckz.entities.Project;
 import java.util.ArrayList;
 import javax.annotation.PostConstruct;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -22,6 +24,8 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
+@DeclareRoles(value = {"admin","user"})
+@RolesAllowed("user")
 public class CandidateView {
     private List<Candidate> candidates;
     private List<Project> projects;

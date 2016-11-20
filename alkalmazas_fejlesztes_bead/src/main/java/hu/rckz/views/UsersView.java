@@ -14,6 +14,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
@@ -25,6 +27,7 @@ import org.primefaces.model.DualListModel;
  */
 @Named
 @ViewScoped
+
 public class UsersView implements Serializable {
 
     @EJB
@@ -39,7 +42,7 @@ public class UsersView implements Serializable {
     private DualListModel<Project> projectDualList;   
 
     @PostConstruct
-    public void init() {       
+    public void init() {    
         
         registeredUsers = usersBean.getRegisteredUsers(); 
         rolesDualList = new DualListModel<>(new ArrayList<Role>(), new ArrayList<Role>());
@@ -69,7 +72,7 @@ public class UsersView implements Serializable {
     }
 
     public void registerNewUser(String username, String password, String name) {
-        usersBean.registerNewUser(username, password, name);
+        usersBean.registerNewUser(username, PUtils.hash(password), name);
         init();
         PUtils.updateComponent(":registeredUsersForm");
     }

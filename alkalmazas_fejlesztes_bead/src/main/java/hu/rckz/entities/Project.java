@@ -38,7 +38,7 @@ public class Project extends BaseEntity implements Serializable {
     @ManyToOne(cascade = CascadeType.REMOVE)
     private Category category;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<User> users;
 
     public Project(String projectName, int projectNumber) {

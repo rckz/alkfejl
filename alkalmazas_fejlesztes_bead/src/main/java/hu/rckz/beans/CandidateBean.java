@@ -10,6 +10,8 @@ import hu.rckz.entities.Project;
 import hu.rckz.entities.User;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.security.DeclareRoles;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -19,6 +21,8 @@ import javax.persistence.PersistenceContext;
  * @author rckz
  */
 @Stateless
+@DeclareRoles(value = {"admin","user"})
+@RolesAllowed({"admin","user"})
 public class CandidateBean {
     
     @PersistenceContext

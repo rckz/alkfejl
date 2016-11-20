@@ -10,7 +10,7 @@
     </context-param>
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>hot-sneaks</param-value>
+        <param-value>smoothness</param-value>
     </context-param>
     <login-config>
         <auth-method>Basic</auth-method>
