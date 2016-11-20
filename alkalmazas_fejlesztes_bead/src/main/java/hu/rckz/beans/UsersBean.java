@@ -31,7 +31,7 @@ public class UsersBean {
             em.persist(newUser);
             PUtils.addInfoMsg("Regisztrálás", "Az felhasználó regisztrálása sikeres volt!");
         } catch (Exception ex) {
-            
+
         }
 
     }
@@ -46,43 +46,46 @@ public class UsersBean {
         }
     }
 
-    public List<Project> getProjectsForUser(User user){
-        return em.find(User.class,user.getId()).getProjects();
+    public List<Project> getProjectsForUser(User user) {
+        return em.find(User.class, user.getId()).getProjects();
     }
-    public List<Project> getAvailableProjects(User user){
+
+    public List<Project> getAvailableProjects(User user) {
         List<Project> resultList = em.createNamedQuery("Project.getProjects", Project.class).getResultList();
-        List<Project> returnList = new ArrayList<>();        
-        for(Project x:resultList){
+        List<Project> returnList = new ArrayList<>();
+        for (Project x : resultList) {
             boolean found = false;
-            for(int i = 0;i<user.getProjects().size() && !found;++i){
-                if(user.getProjects().get(i).equals(x)){
+            for (int i = 0; i < user.getProjects().size() && !found; ++i) {
+                if (user.getProjects().get(i).equals(x)) {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 returnList.add(x);
             }
         }
         return returnList;
     }
+
     public List<User> getRegisteredUsers() {
         return em.createNamedQuery("User.getRegisteredUsers", User.class).getResultList();
     }
-    public List<Role> getAllRoles(){
-        return em.createNamedQuery("Role.getRoles",Role.class).getResultList();
+
+    public List<Role> getAllRoles() {
+        return em.createNamedQuery("Role.getRoles", Role.class).getResultList();
     }
 
     public List<Role> getAvailableRoles(User user) {
         List<Role> resultList = em.createNamedQuery("Role.getRoles", Role.class).getResultList();
-        List<Role> returnList = new ArrayList<>();        
-        for(Role x:resultList){
+        List<Role> returnList = new ArrayList<>();
+        for (Role x : resultList) {
             boolean found = false;
-            for(int i = 0;i<user.getRoles().size() && !found;++i){
-                if(user.getRoles().get(i).equals(x)){
+            for (int i = 0; i < user.getRoles().size() && !found; ++i) {
+                if (user.getRoles().get(i).equals(x)) {
                     found = true;
                 }
             }
-            if(!found){
+            if (!found) {
                 returnList.add(x);
             }
         }
@@ -90,38 +93,40 @@ public class UsersBean {
     }
 
     public List<Role> getRolesForUser(User user) {
-        try{
+        try {
             List<Role> roles = user.getRoles();
             return roles;
-        }catch(NullPointerException ex){
+        } catch (NullPointerException ex) {
             return new ArrayList<>();
-        }        
+        }
     }
 
-    public void saveRoles(User user,List<Role> roles) {
+    public void saveRoles(User user, List<Role> roles) {
         User found = em.find(User.class, user.getId());
         found.setRoles(roles);
         em.merge(found);
     }
 
-    public void saveProjects(User user,List<Project> source, List<Project> target) {
+    public void saveProjects(User user, List<Project> source, List<Project> target) {
         User found = em.find(User.class, user.getId());
         found.setProjects(target);
-        for(Project x: target){
-            x.getUsers().add(user);
-            em.merge(x);
-        }        
-        for(Project x : source){
+        for (Project x : target) {
+            if (!x.getUsers().contains(user)) {
+                x.getUsers().add(user);
+                em.merge(x);
+            }
+        }
+        for (Project x : source) {
             x.getUsers().remove(user);
             em.merge(x);
         }
-        
+
     }
 
     public void saveNewProject(String name, String number) {
-        try{
-            em.persist(new Project(name,Integer.parseInt(number)));
-        }catch(Exception ex){
+        try {
+            em.persist(new Project(name, Integer.parseInt(number)));
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }

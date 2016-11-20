@@ -14,7 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -43,6 +42,9 @@ public class User extends BaseEntity implements Serializable {
 
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Project> projects;
+    
+    @ManyToMany
+    private List<Menu> menu;
 
     public User(String username, String password, String name) {
         this.username = username;
@@ -97,5 +99,14 @@ public class User extends BaseEntity implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public List<Menu> getMenu() {
+        return menu;
+    }
+
+    public void setMenu(List<Menu> menu) {
+        this.menu = menu;
+    }
+    
 
 }

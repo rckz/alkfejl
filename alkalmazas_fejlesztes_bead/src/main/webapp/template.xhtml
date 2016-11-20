@@ -30,9 +30,7 @@
     <h:body>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-lg-12">
-                <p:menubar model="">
-
-                    <p:menuitem value="users" url="http://localhost:8080/alkalmazas_fejlesztes_bead/users.xhtml"/>
+                <p:menubar model="#{menuBean.model}">                    
                     <f:facet name="options" rendered="#{empty sessionView.loggedInUser}">
                         <h:form id="templateForm">
                             <p:growl id="growl" showDetail="true" />
