@@ -96,13 +96,16 @@ Final Memory: 11M/165M
 ------------------------------------------------------------------------
 
 Két tesztmetódus fut le, az első azt ellenőrzi, hogy helyesen be tud-e lépni a felhasználó.
+```
 @Test
     public void testLogin() throws Exception {
         LoginBean loginBean = (LoginBean) container.getContext().lookup("java:global/classes/LoginBean");
         User loggedInUser = loginBean.getLoggedInUser();
         Assert.assertEquals("admin", loggedInUser.getUsername());
     }
+```
 A második teszt metódus teszteli, hogy lehet-e új felhasználót létrehozni, majd ellenőrzi, hogy megkapja-e a szerepköröket, majd hogy lehet-e neki projektet felvenni.
+```
 @Test
     public void testRegistration() throws Exception {
         UsersBean usersBean = (UsersBean) container.getContext().lookup("java:global/classes/UsersBean");
@@ -115,7 +118,8 @@ A második teszt metódus teszteli, hogy lehet-e új felhasználót létrehozni,
         Assert.assertEquals("commonuser", usersBean.getRegisteredUsers().get(usersBean.getRegisteredUsers().size()-1).getRoles().get(0).getName());
         //teszt projektek
         Assert.assertEquals("Projektnev", usersBean.getAvailableProjects(newUser).get(0).getProjectName());
-    }
+}
+```
     
 A tesztelés a JUnit(4.1) és a Glassfish alkalmazás szerver embedded apijával történik.
 
